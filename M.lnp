@@ -1,0 +1,13 @@
+"STARTUP.obj",
+"Alarm.obj",
+"Delay.obj",
+"Gogogo.obj",
+"LCD.obj",
+"Main.obj",
+"ObstAvoid.obj",
+"ObstDetect.obj",
+"ObstInfrared.obj",
+"SteeringGear.obj",
+"UltraSonicRanging.obj" 
+TO "M.Partner" 
+RAMSIZE(256) 

@@ -1,0 +1,109 @@
+C51 COMPILER V9.00   ALARM                                                                 07/09/2017 17:40:52 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE ALARM
+OBJECT MODULE PLACED IN Alarm.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Source\Alarm.c BROWSE DEBUG OBJECTEXTEND PRINT(.\Alarm.lst) OBJECT(Alarm.ob
+                    -j)
+
+line level    source
+
+   1          /**********头文件定义***********/
+   2          #include "../Include/Alarm.h"
+   3          
+   4          /**********全局变量声明*********/
+   5          
+   6          /**********函数定义*************/
+   7          /************************************************************************************************/
+   8          void Alarm(uchar ObstFlag)                                                              /****************告警函数****************/
+   9          {
+  10   1              if(ObstFlag == 0)                                                                       /*无障碍，前进                                                  */
+  11   1              {
+  12   2                      if(gucTempFlag != ObstFlag)
+  13   2                      {
+  14   3                              Gotoxy(2,1);
+  15   3                              LCD_Write_String("                ");           /*打印16个空格                                                  */
+  16   3                              Gotoxy(2,1);
+  17   3                              LCD_Write_String("No Obst,Forward!");   
+  18   3                      }
+  19   2              }
+  20   1              else if(ObstFlag == 1)                                                          /*正前方有障碍，左转                                    */
+  21   1              {
+  22   2                      if(gucTempFlag != ObstFlag)
+  23   2                      {
+  24   3                              Gotoxy(2,1);
+  25   3                              LCD_Write_String("                ");   
+  26   3                              Gotoxy(2,1);
+  27   3                              LCD_Write_String("Obst,Turn Left!");
+  28   3                      }       
+  29   2              }
+  30   1              else if(ObstFlag == 2)                                                          /*正前方有障碍，右转                                    */
+  31   1              {
+  32   2                      if(gucTempFlag != ObstFlag)
+  33   2                      {
+  34   3                              Gotoxy(2,1);
+  35   3                              LCD_Write_String("                ");   
+  36   3                              Gotoxy(2,1);
+  37   3                              LCD_Write_String("Obst,Turn Right!");   
+  38   3                      }
+  39   2              }
+  40   1              else if(ObstFlag == 3)                                                          /*前、左、右都有障碍，后退                              */
+  41   1              {
+  42   2                      if(gucTempFlag != ObstFlag)
+  43   2                      {
+  44   3                              Gotoxy(2,1);
+  45   3                              LCD_Write_String("                ");           
+  46   3                              Gotoxy(2,1);
+  47   3                              LCD_Write_String("Obst,Backward!");
+  48   3                      }
+  49   2              }
+  50   1              else if(ObstFlag == 4)                                                          /*前、后、左、右都有障碍，避障失败              */
+  51   1              {
+  52   2                      if(gucTempFlag != ObstFlag)
+  53   2                      {
+  54   3                              Gotoxy(2,1);
+C51 COMPILER V9.00   ALARM                                                                 07/09/2017 17:40:52 PAGE 2   
+
+  55   3                              LCD_Write_String("                ");           
+  56   3                              Gotoxy(2,1);
+  57   3                              LCD_Write_String("AVOID FAILED!");
+  58   3                      }
+  59   2              }
+  60   1              else if(ObstFlag == 7)                                                          /*初始化完成                                                    */
+  61   1              {
+  62   2                      if(gucTempFlag != ObstFlag)
+  63   2                      {
+  64   3                              Gotoxy(1,1);
+  65   3                              LCD_Write_String("Initial Completed!");
+  66   3                              delay_ms(500);
+  67   3                              LCD_Clear();                                                            /*清屏                                                                  */
+  68   3                      }
+  69   2              }
+  70   1              else if(ObstFlag == 7)                                                          /*初始化完成                                                    */
+  71   1              {
+  72   2                      if(gucTempFlag != ObstFlag)
+  73   2                      {
+  74   3                              Gotoxy(2,1);
+  75   3                              LCD_Write_String("                ");   
+  76   3                              Gotoxy(2,1);
+  77   3                              LCD_Write_String("FATAL ERROR!");
+  78   3                      }
+  79   2              }
+  80   1              gucTempFlag =  ObstFlag;
+  81   1      }
+  82          
+  83          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    315    ----
+   CONSTANT SIZE    =    128    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
